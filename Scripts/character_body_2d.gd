@@ -8,16 +8,16 @@ var contadorSaltos = 0
 func _physics_process(delta: float) -> void:
 	
 	
-	# baja gravedad pulsando control
+	# baja gravedad pulsando control. si no gravedad normal
 	if not is_on_floor() and Input.is_action_pressed("control"):
-		velocity.y += 10  * delta
-	# Add the gravity.
-	if not is_on_floor():
+		velocity += get_gravity() / 2 * delta
+	else:
 		velocity += get_gravity() * delta
 	
+	
 	 #teleport con z (que avance numero de pixeles hacia una direccion)
-	if Input.is_action_pressed("z"):
-		position.x += 10
+	if Input.is_action_just_pressed("z"):
+		position.x += 150
 
 	
 		
