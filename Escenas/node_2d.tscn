@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dwcf2lvrjxwoa" path="res://Scripts/static_body_2d.gd" id="1_eeo38"]
 [ext_resource type="Texture2D" uid="uid://bj32y2o07t3c2" path="res://icon.svg" id="2_2estv"]
 [ext_resource type="Script" uid="uid://cuh6r6ue17ysl" path="res://Scripts/character_body_2d.gd" id="3_cqjn6"]
-[ext_resource type="Texture2D" uid="uid://bhqij5hgreblp" path="res://knight walk animation.png" id="4_cqjn6"]
-[ext_resource type="Texture2D" uid="uid://7px0c6rccki8" path="res://knight 3 idle.png" id="5_1jbxi"]
+[ext_resource type="Texture2D" uid="uid://bhqij5hgreblp" path="res://Animaciones/knight walk animation.png" id="4_cqjn6"]
+[ext_resource type="Texture2D" uid="uid://7px0c6rccki8" path="res://Animaciones/knight 3 idle.png" id="5_1jbxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
 size = Vector2(1123, 76.5)

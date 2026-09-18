@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7px0c6rccki8"
-path="res://.godot/imported/knight 3 idle.png-05ba60c43a88f9c6eb766c78e00bce72.ctex"
+uid="uid://bhqij5hgreblp"
+path="res://.godot/imported/knight walk animation.png-df7bad0976ec30252810bcf8e6658f18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://knight 3 idle.png"
-dest_files=["res://.godot/imported/knight 3 idle.png-05ba60c43a88f9c6eb766c78e00bce72.ctex"]
+source_file="res://Animaciones/knight walk animation.png"
+dest_files=["res://.godot/imported/knight walk animation.png-df7bad0976ec30252810bcf8e6658f18.ctex"]
 
 [params]
 
