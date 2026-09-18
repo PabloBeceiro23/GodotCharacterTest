@@ -1,9 +1,18 @@
 extends CharacterBody2D
 
 const SPEED = 350
-const JUMP_SPEED = -800
+const JUMP_SPEED = -600
 var contadorSaltos = 0
 
+func _process(delta):
+	if velocity.x > 0 and Input.is_action_pressed("derecha"):
+		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.play("caminar")
+	elif velocity.x < 0 and Input.is_action_pressed("izquierda"):
+		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.play("caminar")
+	else:
+		$AnimatedSprite2D.play("idle")
 
 func _physics_process(delta: float) -> void:
  	# Add the gravity.

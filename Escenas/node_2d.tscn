@@ -3,12 +3,111 @@
 [ext_resource type="Script" uid="uid://dwcf2lvrjxwoa" path="res://Scripts/static_body_2d.gd" id="1_eeo38"]
 [ext_resource type="Texture2D" uid="uid://bj32y2o07t3c2" path="res://icon.svg" id="2_2estv"]
 [ext_resource type="Script" uid="uid://cuh6r6ue17ysl" path="res://Scripts/character_body_2d.gd" id="3_cqjn6"]
+[ext_resource type="Texture2D" uid="uid://bhqij5hgreblp" path="res://knight walk animation.png" id="4_cqjn6"]
+[ext_resource type="Texture2D" uid="uid://7px0c6rccki8" path="res://knight 3 idle.png" id="5_1jbxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
 size = Vector2(1123, 76.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(47, 124)
+size = Vector2(52, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2fno"]
+atlas = ExtResource("4_cqjn6")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eslbg"]
+atlas = ExtResource("4_cqjn6")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec6y7"]
+atlas = ExtResource("4_cqjn6")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hcvg"]
+atlas = ExtResource("4_cqjn6")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmto8"]
+atlas = ExtResource("4_cqjn6")
+region = Rect2(168, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4he1"]
+atlas = ExtResource("4_cqjn6")
+region = Rect2(210, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uop7"]
+atlas = ExtResource("4_cqjn6")
+region = Rect2(252, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl5ux"]
+atlas = ExtResource("4_cqjn6")
+region = Rect2(294, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4rtv"]
+atlas = ExtResource("5_1jbxi")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjb75"]
+atlas = ExtResource("5_1jbxi")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3884u"]
+atlas = ExtResource("5_1jbxi")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5l3i"]
+atlas = ExtResource("5_1jbxi")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfkbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2fno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eslbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec6y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hcvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmto8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4he1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uop7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl5ux")
+}],
+"loop": 1,
+"name": &"caminar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4rtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjb75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3884u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5l3i")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
 size = Vector2(48, 314)
@@ -30,17 +129,19 @@ texture = ExtResource("2_2estv")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1243283432]
 script = ExtResource("3_cqjn6")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1772460413]
-position = Vector2(179, -89)
-scale = Vector2(0.35937506, 0.93749994)
-texture = ExtResource("2_2estv")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1449160698]
-position = Vector2(180.5, -89)
+position = Vector2(178, -89)
 shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1940065999]
 position = Vector2(326, -65)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=19668159]
+position = Vector2(177.2647, -88.98288)
+scale = Vector2(1.4411757, 3.000815)
+sprite_frames = SubResource("SpriteFrames_lfkbx")
+animation = &"caminar"
+frame_progress = 0.94536775
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=596008781]
 

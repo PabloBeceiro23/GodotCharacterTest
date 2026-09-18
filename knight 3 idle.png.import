@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bndo4o5fet3j4"
-path="res://.godot/imported/508.jpg-86368c1df72fdee22615489df2a4d38b.ctex"
+uid="uid://7px0c6rccki8"
+path="res://.godot/imported/knight 3 idle.png-05ba60c43a88f9c6eb766c78e00bce72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://508.jpg"
-dest_files=["res://.godot/imported/508.jpg-86368c1df72fdee22615489df2a4d38b.ctex"]
+source_file="res://knight 3 idle.png"
+dest_files=["res://.godot/imported/knight 3 idle.png-05ba60c43a88f9c6eb766c78e00bce72.ctex"]
 
 [params]
 
