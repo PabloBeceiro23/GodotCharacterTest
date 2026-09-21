@@ -4,6 +4,11 @@ const SPEED = 350
 const JUMP_SPEED = -600
 var contadorSaltos = 0
 
+var dentroDeMuerte = false
+
+func _ready() -> void:
+	$AnimatedSprite2D.sprite_frames.set_animation_loop_mode("die", SpriteFrames.LoopMode.LOOP_NONE)
+
 func _process(delta):
 	if velocity.x > 0 and Input.is_action_pressed("derecha"):
 		$AnimatedSprite2D.flip_h = false
@@ -11,6 +16,8 @@ func _process(delta):
 	elif velocity.x < 0 and Input.is_action_pressed("izquierda"):
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("caminar")
+	elif dentroDeMuerte:
+		$AnimatedSprite2D.play("death")
 	else:
 		$AnimatedSprite2D.play("idle")
 
@@ -19,7 +26,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 # movimiento en el eje x
-	if Input.is_action_pressed("izquierda"):
+	if dentroDeMuerte:
+		velocity.x = true
+	elif Input.is_action_pressed("izquierda"):
 		velocity.x = -SPEED
 	elif Input.is_action_pressed("derecha"):
 		velocity.x = SPEED
@@ -68,3 +77,29 @@ func _physics_process(delta: float) -> void:
 		
 
 	move_and_slide()
+
+
+func _on_area_muerte_body_entered(body: Node2D) -> void:
+	dentroDeMuerte = true
+	print("Entraste a la muerte")
+
+
+func _on_area_muerte_body_exited(body: Node2D) -> void:
+	dentroDeMuerte = false
+	print("Saliste de la muerte")
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "death":
+		print("PERDISTE")
+		get_tree().quit()
+		
+# por implementar
+# pinchos de muerte
+# zona frenesi (area que si estas dentro el area la velocidad se duplica)
+# coger monedas (cada moneda puede ser un nodo. y se aumente un contador)
+
+
+func _on_area_pinchos_area_entered(area: Area2D) -> void:
+	dentroDeMuerte = false
+	
