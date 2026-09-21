@@ -25,9 +25,10 @@ func _physics_process(delta: float) -> void:
  	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
 # movimiento en el eje x
 	if dentroDeMuerte:
-		velocity.x = true
+		velocity.x = 0
 	elif Input.is_action_pressed("izquierda"):
 		velocity.x = -SPEED
 	elif Input.is_action_pressed("derecha"):
@@ -100,6 +101,10 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 # coger monedas (cada moneda puede ser un nodo. y se aumente un contador)
 
 
-func _on_area_pinchos_area_entered(area: Area2D) -> void:
-	dentroDeMuerte = false
+
+	
+
+# pinchos
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	dentroDeMuerte = true
 	

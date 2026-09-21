@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://ke2qaw8lgay8" path="res://Sprites/spikes.png" id="7_h2fno"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
-size = Vector2(754.5, 76.5)
+size = Vector2(1124, 76.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6p5j"]
+size = Vector2(760, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
 size = Vector2(52, 124)
@@ -168,14 +171,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
 size = Vector2(48, 314)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vicex"]
-size = Vector2(96, 89)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_77to7"]
-size = Vector2(116, 53.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pkoy"]
-size = Vector2(116, 52)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j00e"]
+size = Vector2(114, 35)
 
 [node name="Node2D" type="Node2D" unique_id=1148614435]
 
@@ -183,7 +180,7 @@ size = Vector2(116, 52)
 script = ExtResource("1_eeo38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo" unique_id=983789122]
-position = Vector2(323.5, 40.249992)
+position = Vector2(325, 40.249992)
 shape = SubResource("RectangleShape2D_lfkbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="Suelo" unique_id=1754658389]
@@ -196,9 +193,9 @@ position = Vector2(1263.5, -276)
 scale = Vector2(6.007812, 0.60156244)
 texture = ExtResource("2_2estv")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Suelo" unique_id=1170056025]
-position = Vector2(1264.75, -277)
-shape = SubResource("RectangleShape2D_lfkbx")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Suelo" unique_id=146899691]
+position = Vector2(1267, -276)
+shape = SubResource("RectangleShape2D_x6p5j")
 
 [node name="Personaje" type="CharacterBody2D" parent="." unique_id=1243283432]
 script = ExtResource("3_cqjn6")
@@ -211,8 +208,8 @@ shape = SubResource("RectangleShape2D_0hol4")
 position = Vector2(326, -65)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Personaje" unique_id=19668159]
-position = Vector2(177.2647, -88.98288)
-scale = Vector2(1.4411757, 3.000815)
+position = Vector2(179.2647, -88.98288)
+scale = Vector2(1.3459378, 3.000815)
 sprite_frames = SubResource("SpriteFrames_lfkbx")
 animation = &"death"
 
@@ -227,37 +224,19 @@ texture = ExtResource("2_2estv")
 position = Vector2(863, -156)
 shape = SubResource("RectangleShape2D_aui74")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=479613388]
+[node name="pinchos" type="Node2D" parent="." unique_id=1210381699]
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=311692005]
-position = Vector2(-186, -48)
-scale = Vector2(0.765625, 0.7265625)
-texture = ExtResource("2_2estv")
-
-[node name="areaMuerte" type="Area2D" parent="Node2D" unique_id=1040080681]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/areaMuerte" unique_id=1576832994]
-position = Vector2(-186, -48.5)
-shape = SubResource("RectangleShape2D_vicex")
-
-[node name="pinchos" type="StaticBody2D" parent="." unique_id=260598906]
-
-[node name="Sprite2D" type="Sprite2D" parent="pinchos" unique_id=1277758584]
-position = Vector2(1254.0001, -344)
-scale = Vector2(0.13607962, 0.12554948)
+[node name="Sprite2D" type="Sprite2D" parent="pinchos" unique_id=1627012279]
+position = Vector2(1250, -331.625)
+scale = Vector2(0.12954538, 0.07637362)
 texture = ExtResource("7_h2fno")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pinchos" unique_id=901667257]
-position = Vector2(1255, -342.25)
-shape = SubResource("RectangleShape2D_77to7")
+[node name="Area2D" type="Area2D" parent="pinchos" unique_id=2117728205]
+position = Vector2(2034, -767)
 
-[node name="areaPinchos" type="Area2D" parent="pinchos/CollisionShape2D" unique_id=173305015]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pinchos/CollisionShape2D/areaPinchos" unique_id=1481037091]
-position = Vector2(0, 0.25)
-shape = SubResource("RectangleShape2D_1pkoy")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pinchos/Area2D" unique_id=6006821]
+position = Vector2(-783, 435)
+shape = SubResource("RectangleShape2D_5j00e")
 
 [connection signal="animation_finished" from="Personaje/AnimatedSprite2D" to="Personaje" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Node2D/areaMuerte" to="Personaje" method="_on_area_muerte_body_entered"]
-[connection signal="body_exited" from="Node2D/areaMuerte" to="Personaje" method="_on_area_muerte_body_exited"]
-[connection signal="area_entered" from="pinchos/CollisionShape2D/areaPinchos" to="Personaje" method="_on_area_pinchos_area_entered"]
+[connection signal="body_entered" from="pinchos/Area2D" to="Personaje" method="_on_area_2d_body_entered"]
