@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://7px0c6rccki8" path="res://Animaciones/knight 3 idle.png" id="5_1jbxi"]
 [ext_resource type="Texture2D" uid="uid://ccerpxliabdgr" path="res://Animaciones/knight death animation.png" id="5_h2fno"]
 [ext_resource type="Texture2D" uid="uid://ke2qaw8lgay8" path="res://Sprites/spikes.png" id="7_h2fno"]
+[ext_resource type="Texture2D" uid="uid://cctwqoi6fiovx" path="res://Sprites/zonaFrenesi.png" id="8_eslbg"]
+[ext_resource type="Script" uid="uid://ciwihuew10muu" path="res://Escenas/roca_flotante.gd" id="9_ec6y7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
-size = Vector2(1124, 76.5)
+size = Vector2(1737, 76.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6p5j"]
 size = Vector2(760, 76)
@@ -174,18 +176,59 @@ size = Vector2(48, 314)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5j00e"]
 size = Vector2(114, 35)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vicex"]
+size = Vector2(758, 177)
+
+[sub_resource type="Animation" id="Animation_0hcvg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(225, -161)]
+}
+
+[sub_resource type="Animation" id="Animation_dmto8"]
+resource_name = "movimiento"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(225, -161), Vector2(375, -170)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4he1"]
+_data = {
+&"RESET": SubResource("Animation_0hcvg"),
+&"movimiento": SubResource("Animation_dmto8")
+}
+
 [node name="Node2D" type="Node2D" unique_id=1148614435]
 
 [node name="Suelo" type="StaticBody2D" parent="." unique_id=181905047]
 script = ExtResource("1_eeo38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo" unique_id=983789122]
-position = Vector2(325, 40.249992)
+position = Vector2(18.5, 40.249992)
 shape = SubResource("RectangleShape2D_lfkbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="Suelo" unique_id=1754658389]
-position = Vector2(325, 40.999992)
-scale = Vector2(8.874999, 0.60156244)
+position = Vector2(22.999939, 40.999992)
+scale = Vector2(13.59375, 0.60156244)
 texture = ExtResource("2_2estv")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Suelo" unique_id=735277598]
@@ -225,18 +268,49 @@ position = Vector2(863, -156)
 shape = SubResource("RectangleShape2D_aui74")
 
 [node name="pinchos" type="Node2D" parent="." unique_id=1210381699]
+position = Vector2(1267, -333)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="pinchos" unique_id=1627012279]
-position = Vector2(1250, -331.625)
 scale = Vector2(0.12954538, 0.07637362)
 texture = ExtResource("7_h2fno")
 
 [node name="Area2D" type="Area2D" parent="pinchos" unique_id=2117728205]
-position = Vector2(2034, -767)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pinchos/Area2D" unique_id=6006821]
-position = Vector2(-783, 435)
 shape = SubResource("RectangleShape2D_5j00e")
+
+[node name="zonaFrenesi" type="Area2D" parent="." unique_id=1629798151]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="zonaFrenesi" unique_id=2076739697]
+position = Vector2(-284, -89)
+shape = SubResource("RectangleShape2D_vicex")
+
+[node name="Sprite2D" type="Sprite2D" parent="zonaFrenesi" unique_id=2084890377]
+modulate = Color(1, 1, 1, 0.2627451)
+position = Vector2(-285.5, -86)
+scale = Vector2(3.373874, 1.2162162)
+texture = ExtResource("8_eslbg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2066441754]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1914397552]
+offset_left = 54.0
+offset_top = -149.0
+offset_right = 143.0
+offset_bottom = -126.0
+text = "Monedas: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="RocaFlotante" type="Sprite2D" parent="." unique_id=172912672]
+position = Vector2(225, -161)
+texture = ExtResource("2_2estv")
+script = ExtResource("9_ec6y7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RocaFlotante" unique_id=1858442595]
+libraries/ = SubResource("AnimationLibrary_q4he1")
 
 [connection signal="animation_finished" from="Personaje/AnimatedSprite2D" to="Personaje" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="pinchos/Area2D" to="Personaje" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="zonaFrenesi" to="Personaje" method="_on_zona_frenesi_body_entered"]
+[connection signal="body_exited" from="zonaFrenesi" to="Personaje" method="_on_zona_frenesi_body_exited"]

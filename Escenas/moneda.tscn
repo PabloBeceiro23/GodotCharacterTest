@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dnlpi2dtk6640"]
+
+[ext_resource type="Script" uid="uid://bn8blm5pwo56i" path="res://Escenas/moneda.gd" id="1_n1bbm"]
+[ext_resource type="Texture2D" uid="uid://c748gpoeuk5ge" path="res://Sprites/coin.png" id="1_u6us8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77to7"]
+radius = 49.010204
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i42n"]
+atlas = ExtResource("1_u6us8")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0ua0"]
+atlas = ExtResource("1_u6us8")
+region = Rect2(120, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw0am"]
+atlas = ExtResource("1_u6us8")
+region = Rect2(240, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m4mm"]
+atlas = ExtResource("1_u6us8")
+region = Rect2(360, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw0mt"]
+atlas = ExtResource("1_u6us8")
+region = Rect2(480, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn0ys"]
+atlas = ExtResource("1_u6us8")
+region = Rect2(600, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eor8"]
+atlas = ExtResource("1_u6us8")
+region = Rect2(720, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxf4g"]
+atlas = ExtResource("1_u6us8")
+region = Rect2(840, 0, 120, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfkbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i42n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0ua0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw0am")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m4mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw0mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn0ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eor8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxf4g")
+}],
+"loop": 1,
+"name": &"girar",
+"speed": 12.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=2115690289]
+script = ExtResource("1_n1bbm")
+
+[node name="moneda" type="Area2D" parent="." unique_id=521352667]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="moneda" unique_id=1216946487]
+shape = SubResource("CircleShape2D_77to7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="moneda" unique_id=1516635168]
+sprite_frames = SubResource("SpriteFrames_lfkbx")
+animation = &"girar"
+frame_progress = 0.85627466
+
+[connection signal="body_entered" from="moneda" to="." method="_on_moneda_body_entered"]

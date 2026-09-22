@@ -4,10 +4,12 @@ const SPEED = 350
 const JUMP_SPEED = -600
 var contadorSaltos = 0
 
+var enFrenesi = false
 var dentroDeMuerte = false
 
 func _ready() -> void:
 	$AnimatedSprite2D.sprite_frames.set_animation_loop_mode("die", SpriteFrames.LoopMode.LOOP_NONE)
+	
 
 func _process(delta):
 	if velocity.x > 0 and Input.is_action_pressed("derecha"):
@@ -29,6 +31,10 @@ func _physics_process(delta: float) -> void:
 # movimiento en el eje x
 	if dentroDeMuerte:
 		velocity.x = 0
+	elif enFrenesi and Input.is_action_pressed("izquierda"):
+		velocity.x = -SPEED - 300
+	elif enFrenesi and Input.is_action_pressed("derecha"):
+		velocity.x = SPEED + 300
 	elif Input.is_action_pressed("izquierda"):
 		velocity.x = -SPEED
 	elif Input.is_action_pressed("derecha"):
@@ -108,3 +114,11 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	dentroDeMuerte = true
 	
+
+# frenesi entrar
+func _on_zona_frenesi_body_entered(body: Node2D) -> void:
+	enFrenesi = true
+
+# frenesi salir
+func _on_zona_frenesi_body_exited(body: Node2D) -> void:
+	enFrenesi = false
