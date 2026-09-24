@@ -74,6 +74,7 @@ animations = [{
 script = ExtResource("1_n1bbm")
 
 [node name="moneda" type="Area2D" parent="." unique_id=521352667]
+position = Vector2(577, 302)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="moneda" unique_id=1216946487]
 shape = SubResource("CircleShape2D_77to7")
@@ -81,6 +82,6 @@ shape = SubResource("CircleShape2D_77to7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="moneda" unique_id=1516635168]
 sprite_frames = SubResource("SpriteFrames_lfkbx")
 animation = &"girar"
-frame_progress = 0.85627466
+frame_progress = 0.3936609
 
 [connection signal="body_entered" from="moneda" to="." method="_on_moneda_body_entered"]

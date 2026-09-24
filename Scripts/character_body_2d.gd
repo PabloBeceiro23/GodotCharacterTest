@@ -110,11 +110,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 	
 
-# pinchos
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	dentroDeMuerte = true
-	
-
 # frenesi entrar
 func _on_zona_frenesi_body_entered(body: Node2D) -> void:
 	enFrenesi = true
@@ -122,3 +117,7 @@ func _on_zona_frenesi_body_entered(body: Node2D) -> void:
 # frenesi salir
 func _on_zona_frenesi_body_exited(body: Node2D) -> void:
 	enFrenesi = false
+
+
+func _on_pinchos_body_entered(body: Node2D) -> void:
+	dentroDeMuerte = true
